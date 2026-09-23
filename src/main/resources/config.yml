@@ -87,14 +87,14 @@ DIALOG:
   PREVIEW-ITEM-SIZE: 96
   PREVIEW-CONTENT-SIZE: 40
   # Cap on how many stacks a container preview draws.
-  PREVIEW-MAX-CONTENTS: 21
+  PREVIEW-MAX-CONTENTS: 45
   # Characters of a book's first page shown in the preview. 0 hides it.
   PREVIEW-BOOK-CHARS: 160
   # Seconds the map is placed in the player's off hand so they can see the art.
   # A vanilla client cannot render map art any other way.
   MAP-PREVIEW-SECONDS: 10
-  LISTINGS-PER-PAGE: 21
-  COLLECT-PER-PAGE: 15
+  LISTINGS-PER-PAGE: 45
+  COLLECT-PER-PAGE: 45
 
 BLACKLIST-ITEMS:
   - "COMMAND_BLOCK"

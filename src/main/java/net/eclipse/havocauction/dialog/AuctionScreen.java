@@ -65,6 +65,25 @@ public class AuctionScreen extends Screen {
         return tokens;
     }
 
+    /**
+     * Renders every option for a cycling button, marking the active one, so the hover
+     * shows the whole list rather than just the current value.
+     */
+    private String options(String button, String active, List<String> all) {
+        org.bukkit.configuration.ConfigurationSection config = button(button);
+        String on = config == null ? " &#FF3B30\u25b8 &f{option}"
+                : config.getString("SELECTED-FORMAT", " &#FF3B30\u25b8 &f{option}");
+        String off = config == null ? "   &7{option}"
+                : config.getString("UNSELECTED-FORMAT", "   &7{option}");
+
+        StringBuilder sb = new StringBuilder();
+        for (String option : all) {
+            if (sb.length() > 0) sb.append('\n');
+            sb.append((option.equals(active) ? on : off).replace("{option}", option));
+        }
+        return sb.toString();
+    }
+
     private Map<String, String> screen(List<Listing> results) {
         int pages = totalPages(results.size(), perPage());
         Map<String, String> map = new HashMap<>();
@@ -76,6 +95,10 @@ public class AuctionScreen extends Screen {
         map.put("sort", plugin.sortName(session.getSort()));
         map.put("filter", plugin.categoryName(session.getFilter()));
         map.put("query", session.getQuery().isEmpty() ? "none" : session.getQuery());
+        map.put("sort_options", options("SORT", plugin.sortName(session.getSort()),
+                java.util.Arrays.stream(SortOption.values()).map(plugin::sortName).toList()));
+        map.put("filter_options", options("FILTER", plugin.categoryName(session.getFilter()),
+                java.util.Arrays.stream(Category.values()).map(plugin::categoryName).toList()));
         map.put("balance", NumberUtil.money(plugin.economy().balance(player)));
         return map;
     }
