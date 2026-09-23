@@ -1,0 +1,664 @@
+# =====================================================
+#              HavocAuction - menus.yml
+# =====================================================
+# Menus are drawn as pictures. STRUCTURE is one line per row, one character per slot,
+# and CHARS says what each character means, so you can see the shape of a menu here
+# instead of counting slot numbers.
+#
+#   "."  content, the repeating area
+#   "g"  border pane      "#"  filler pane
+#   "<"  previous page    ">"  next page
+#
+# Every other character names a button under ITEMS.
+
+LINES:
+  DURABILITY: " &7Durability: &f{durability} &8({durability_percent}%)"
+  RENAMED: " &#FF3B30&l! &7Renamed. Actually a &f{type}"
+  RENAMED-TAG: " &8({type})"
+
+NAMES:
+  SORT:
+    RECENTLY-LISTED: "Recently Listed"
+    OLDEST-LISTED: "Oldest Listed"
+    LOWEST-PRICE: "Lowest Price"
+    HIGHEST-PRICE: "Highest Price"
+    BEST-UNIT-PRICE: "Best Price/Item"
+    ENDING-SOON: "Ending Soon"
+  FILTER:
+    ALL: "All Categories"
+    BLOCKS: "Building Blocks"
+    TOOLS: "Tools & Equipment"
+    FOOD: "Food & Consumables"
+    COMBAT: "Combat & Armor"
+    POTIONS: "Potions & Brews"
+    BOOKS: "Enchanted Books"
+    INGREDIENTS: "Crafting Items"
+    UTILITIES: "Utilities & Misc"
+
+FILLER:
+  MATERIAL: GRAY_STAINED_GLASS_PANE
+  NAME: " "
+
+MENUS:
+
+  AUCTION:
+    TITLE: "&#FF3B30&lᴀᴜᴄᴛɪᴏɴ ʜᴏᴜѕᴇ"
+    STRUCTURE:
+      - "g g g g i g g g g"
+      - "g . . . . . . . g"
+      - "g . . . . . . . g"
+      - "g . . . . . . . g"
+      - "g g g g g g g g g"
+      - "< # o f s y # x >"
+    CHARS:
+      CONTENT: "."
+      BORDER: "g"
+      FILLER: "#"
+      INFO: "i"
+      PREVIOUS: "<"
+      NEXT: ">"
+      SORT: "o"
+      FILTER: "f"
+      SEARCH: "s"
+      MY-LISTINGS: "y"
+      CLOSE: "x"
+    BODY:
+      - " &7Listings: &f{results}"
+      - " &7Page: &e{page}&7/&e{pages}"
+      - ""
+      - " &7Sort: &f{sort}"
+      - " &7Filter: &f{filter}"
+      - " &7Search: &f{query}"
+      - ""
+      - " &7Balance: &#34C759${balance}"
+    EMPTY: "&7Nothing matches those filters."
+    ITEMS:
+      INFO:
+        MATERIAL: NETHER_STAR
+      BORDER:
+        MATERIAL: GRAY_STAINED_GLASS_PANE
+        NAME: " "
+      FILLER:
+        MATERIAL: BLACK_STAINED_GLASS_PANE
+        NAME: " "
+      LISTING:
+        NAME: "&#FF3B30&l{item}{renamed_tag}"
+        LORE:
+          - " &7Seller: &e{seller}"
+          - "{renamed_line}"
+          - " &7Type: &f{type}"
+          - "{durability_line}"
+          - " &7Buy Price: &#34C759${price}"
+          - " &7Per item: &#FFCC00${unit_price}"
+          - " &7Time Left: &e{expires}"
+          - ""
+          - " &e▸ Click to purchase item"
+      OWN-LISTING:
+        NAME: "&#FFCC00&l{item}{renamed_tag}"
+        LORE:
+          - " &7Your listing"
+          - "{renamed_line}"
+          - "{durability_line}"
+          - " &7Price: &#34C759${price}"
+          - " &7Time Left: &e{expires}"
+          - ""
+          - " &e▸ Click to manage"
+      SORT:
+        MATERIAL: HOPPER
+        LABEL: "&#FF3B30&lѕᴏʀᴛ ʙʏ"
+        TOOLTIP:
+          - " &#FF3B30▸ &f{sort}"
+          - ""
+          - "&e▸ Click to cycle sorting"
+      FILTER:
+        MATERIAL: COMPASS
+        LABEL: "&#FF3B30&lᴄᴀᴛᴇɢᴏʀʏ ꜰɪʟᴛᴇʀ"
+        TOOLTIP:
+          - " &#FF3B30▸ &f{filter}"
+          - ""
+          - "&e▸ Click to cycle categories"
+      SEARCH:
+        MATERIAL: OAK_SIGN
+        LABEL: "&#FF3B30&lѕᴇᴀʀᴄʜ ɪᴛᴇᴍѕ"
+        TOOLTIP:
+          - "&7Current: &f{query}"
+          - ""
+          - "&e▸ Click to search"
+          - "&8Or use /ah <text>"
+      MY-LISTINGS:
+        MATERIAL: CHEST
+        LABEL: "&#FFCC00&lʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ʟɪѕᴛɪɴɢѕ"
+        TOOLTIP: [ "&7Sell, manage, collect and history." ]
+      PREVIOUS:
+        MATERIAL: RED_STAINED_GLASS_PANE
+        LABEL: "&#FF3B30&l« ᴘʀᴇᴠɪᴏᴜѕ ᴘᴀɢᴇ"
+        TOOLTIP: [ "&7Back to page &e{previous}&7/&e{pages}" ]
+      NEXT:
+        MATERIAL: LIME_STAINED_GLASS_PANE
+        LABEL: "&#34C759&lɴᴇxᴛ ᴘᴀɢᴇ »"
+        TOOLTIP: [ "&7On to page &e{next}&7/&e{pages}" ]
+      CLOSE:
+        MATERIAL: BARRIER
+        LABEL: "&#FF3B30&l✖ ᴄʟᴏѕᴇ"
+        TOOLTIP: [ ]
+
+  SEARCH:
+    TITLE: "&#FF3B30&lѕᴇᴀʀᴄʜ"
+    STRUCTURE:
+      - "g g g g i g g g g"
+      - "g . v . q . x . g"
+      - "g g g g g g g g g"
+    CHARS:
+      CONTENT: "."
+      BORDER: "g"
+      INFO: "i"
+      CONFIRM: "v"
+      INPUT: "q"
+      BACK: "x"
+      CLEAR: "z"
+    BODY:
+      - " &7Type what you are looking for."
+      - " &8elytra, notch signed book, sharpness 5"
+    INPUT-LABEL: "search"
+    ITEMS:
+      INFO:
+        MATERIAL: OAK_SIGN
+      BORDER:
+        MATERIAL: GRAY_STAINED_GLASS_PANE
+        NAME: " "
+      CONFIRM:
+        MATERIAL: LIME_CONCRETE
+        LABEL: "&#34C759&l✔ ѕᴇᴀʀᴄʜ"
+        TOOLTIP: [ ]
+      CLEAR:
+        MATERIAL: RED_DYE
+        LABEL: "&#FF3B30&lᴄʟᴇᴀʀ"
+        TOOLTIP: [ ]
+      INPUT:
+        MATERIAL: OAK_SIGN
+        LABEL: "&#FFCC00&lᴇɴᴛᴇʀ ᴛᴇʀᴍ"
+        TOOLTIP: [ "&7Click, then type in chat." ]
+      BACK:
+        MATERIAL: RED_STAINED_GLASS_PANE
+        LABEL: "&#FF3B30&l« ʙᴀᴄᴋ"
+        TOOLTIP: [ ]
+
+  CONFIRM-PURCHASE:
+    TITLE: "&#FF3B30&lᴄᴏɴꜰɪʀᴍ ᴘᴜʀᴄʜᴀѕᴇ"
+    STRUCTURE:
+      - "g g g g g g g g g"
+      - "g . x . i . v . g"
+      - "g g g p g g g g g"
+    CHARS:
+      CONTENT: "."
+      BORDER: "g"
+      INFO: "i"
+      BACK: "x"
+      CONFIRM: "v"
+      PREVIEW: "p"
+    BODY:
+      - " &7Seller: &e{seller}"
+      - "{renamed_line}"
+      - " &7Type: &f{type}"
+      - "{durability_line}"
+      - ""
+      - " &7Price: &#34C759${price}"
+      - " &7Per item: &#FFCC00${unit_price}"
+      - ""
+      - " &7Balance now: &#34C759${balance}"
+      - " &7After buying: &#FFCC00${after}"
+    ITEMS:
+      BORDER:
+        MATERIAL: GRAY_STAINED_GLASS_PANE
+        NAME: " "
+      CONFIRM:
+        MATERIAL: LIME_CONCRETE
+        LABEL: "&#34C759&l✔ ᴄᴏɴꜰɪʀᴍ ʙᴜʏ"
+        TOOLTIP: [ "&7Complete the purchase for &#34C759${price}" ]
+      PREVIEW:
+        MATERIAL: SPYGLASS
+        LABEL: "&#FFCC00&lɪɴѕᴘᴇᴄᴛ ɪᴛᴇᴍ"
+        TOOLTIP: [ "&7Contents, map art, enchants." ]
+      BACK:
+        MATERIAL: RED_CONCRETE
+        LABEL: "&#FF3B30&l✖ ᴄᴀɴᴄᴇʟ"
+        TOOLTIP: [ "&7Abort the purchase." ]
+
+  CONTAINER-PREVIEW:
+    TITLE: "&8ᴄᴏɴᴛᴇɴᴛѕ ᴘʀᴇᴠɪᴇᴡ"
+    STRUCTURE:
+      - "g g g g i g g g g"
+      - "g . . . . . . . g"
+      - "g . . . . . . . g"
+      - "g . . . . . . . g"
+      - "g g g g g g g g g"
+      - "x # # # m # # # #"
+    CHARS:
+      CONTENT: "."
+      BORDER: "g"
+      FILLER: "#"
+      INFO: "i"
+      BACK: "x"
+      VIEW-MAP: "m"
+    BODY:
+      - " &f{amount}x {item}"
+      - "{renamed_line}"
+      - "{durability_line}"
+    LINE: " &7- &f{amount}x {item}"
+    ENCHANT-LINE: " &7- &f{enchantment} {level}"
+    MORE: " &8...and {count} more stacks"
+    BOOK-HEADER: " &#FFCC00&lSigned Book"
+    BOOK-HEADER-UNSIGNED: " &#FFCC00&lBook and Quill"
+    BOOK-LINES:
+      - " &7Title: &f{title}"
+      - " &7Signed by: &#FF3B30{author}"
+      - " &7Generation: &f{generation} &8| &7Pages: &f{pages}"
+    BOOK-LINES-UNSIGNED:
+      - " &7Pages: &f{pages}"
+      - " &8Not signed, so it can still be edited."
+    BOOK-PAGE: " &8\"{page}\""
+    MAP-HEADER: " &#FFCC00&lMap Art"
+    MAP-HINT: " &7Click below to hold it and see the art."
+    MAP-LINES:
+      - " &7Map &8#&f{id} &8| &7Scale: &f{scale}"
+      - " &7World: &f{world} &8| &7Locked: &f{locked}"
+    EMPTY: "&7Nothing else to show for this item."
+    ITEMS:
+      BORDER:
+        MATERIAL: GRAY_STAINED_GLASS_PANE
+        NAME: " "
+      FILLER:
+        MATERIAL: BLACK_STAINED_GLASS_PANE
+        NAME: " "
+      CONTENT:
+        NAME: "&f{amount}x {item}"
+        LORE: [ "&8Inside this container" ]
+      VIEW-MAP:
+        MATERIAL: FILLED_MAP
+        LABEL: "&#FFCC00&lᴠɪᴇᴡ ᴍᴀᴘ ᴀʀᴛ"
+        TOOLTIP:
+          - "&7Puts the map in your off hand"
+          - "&7for a few seconds."
+          - "&8It cannot be dropped or kept."
+      BACK:
+        MATERIAL: RED_STAINED_GLASS_PANE
+        LABEL: "&#FF3B30&l« ᴄʟᴏѕᴇ ᴘʀᴇᴠɪᴇᴡ"
+        TOOLTIP: [ ]
+
+  MY-LISTINGS:
+    TITLE: "&#FF3B30&lᴀᴜᴄᴛɪᴏɴ &8» &7Your Listings"
+    STRUCTURE:
+      - "g g g g i g g g g"
+      - "g . . . . . . . g"
+      - "g . . . . . . . g"
+      - "g . . . . . . . g"
+      - "g g g g g g g g g"
+      - "< x s c t a b # >"
+    CHARS:
+      CONTENT: "."
+      BORDER: "g"
+      FILLER: "#"
+      INFO: "i"
+      PREVIOUS: "<"
+      NEXT: ">"
+      BACK: "x"
+      SELL: "s"
+      COLLECT: "c"
+      TRANSACTIONS: "t"
+      ALERTS: "a"
+      FAST-BUY: "b"
+    BODY:
+      - " &7Live listings: &f{count}"
+      - " &7Total value: &#34C759${value}"
+      - " &7Waiting to collect: &e{collectable}"
+      - ""
+      - " &7Page: &e{page}&7/&e{pages}"
+    EMPTY: "&7You have nothing listed."
+    ITEMS:
+      INFO:
+        MATERIAL: CHEST
+      BORDER:
+        MATERIAL: GRAY_STAINED_GLASS_PANE
+        NAME: " "
+      FILLER:
+        MATERIAL: BLACK_STAINED_GLASS_PANE
+        NAME: " "
+      LISTING:
+        NAME: "&#FF3B30&l{item}"
+        LORE:
+          - "{renamed_line}"
+          - "{durability_line}"
+          - " &7Price: &#34C759${price}"
+          - " &7Per item: &#FFCC00${unit_price}"
+          - " &7Time Left: &e{expires}"
+          - ""
+          - " &c▸ Click to manage listing"
+      SELL:
+        MATERIAL: EMERALD
+        LABEL: "&#34C759&l+ ʟɪѕᴛ ɴᴇᴡ ɪᴛᴇᴍ"
+        TOOLTIP:
+          - "&7Lists whatever is in your hand."
+          - ""
+          - "&8Or hold an item and execute:"
+          - " &e/ah sell <price>"
+      COLLECT:
+        MATERIAL: CHEST_MINECART
+        LABEL: "&#FFCC00&lᴄᴏʟʟᴇᴄᴛ &7({collectable})"
+        TOOLTIP: [ "&7Items from cancelled listings." ]
+      TRANSACTIONS:
+        MATERIAL: WRITABLE_BOOK
+        LABEL: "&#FFCC00&lᴛʀᴀɴѕᴀᴄᴛɪᴏɴ ʜɪѕᴛᴏʀʏ"
+        TOOLTIP: [ "&7Review sold & bought history." ]
+      ALERTS:
+        MATERIAL: BELL
+        LABEL: "&#FFCC00&lᴀʟᴇʀᴛѕ: &f{alerts}"
+        TOOLTIP: [ "&7Chat message when your items sell." ]
+      FAST-BUY:
+        MATERIAL: SUGAR
+        LABEL: "&#FFCC00&lꜰᴀѕᴛ ᴍᴏᴅᴇ: &f{fast_buy}"
+        TOOLTIP:
+          - "&7Skip confirmation screens."
+          - "&cNo second chances when on."
+      PREVIOUS:
+        MATERIAL: RED_STAINED_GLASS_PANE
+        LABEL: "&#FF3B30&l« ᴘʀᴇᴠɪᴏᴜѕ ᴘᴀɢᴇ"
+        TOOLTIP: [ ]
+      NEXT:
+        MATERIAL: LIME_STAINED_GLASS_PANE
+        LABEL: "&#34C759&lɴᴇxᴛ ᴘᴀɢᴇ »"
+        TOOLTIP: [ ]
+      BACK:
+        MATERIAL: BARRIER
+        LABEL: "&#FF3B30&l« ʙᴀᴄᴋ"
+        TOOLTIP: [ ]
+
+  MANAGE-LISTING:
+    TITLE: "&#FF3B30&lᴀᴜᴄᴛɪᴏɴ &8» &7Your Listing"
+    STRUCTURE:
+      - "g g g g i g g g g"
+      - "g . k . # . p . g"
+      - "g g g g x g g g g"
+    CHARS:
+      CONTENT: "."
+      BORDER: "g"
+      FILLER: "#"
+      INFO: "i"
+      CANCEL-LISTING: "k"
+      PREVIEW: "p"
+      BACK: "x"
+    BODY:
+      - " &7Price: &#34C759${price}"
+      - " &7Per item: &#FFCC00${unit_price}"
+      - "{durability_line}"
+      - ""
+      - " &7Time Left: &e{expires}"
+    ITEMS:
+      BORDER:
+        MATERIAL: GRAY_STAINED_GLASS_PANE
+        NAME: " "
+      CANCEL-LISTING:
+        MATERIAL: RED_CONCRETE
+        LABEL: "&#FF3B30&l✖ ʀᴇᴍᴏᴠᴇ ʟɪѕᴛɪɴɢ"
+        TOOLTIP:
+          - "&7Takes it off the board."
+          - "&7It waits in your collect menu."
+      PREVIEW:
+        MATERIAL: SPYGLASS
+        LABEL: "&#FFCC00&lɪɴѕᴘᴇᴄᴛ ɪᴛᴇᴍ"
+        TOOLTIP: [ ]
+      BACK:
+        MATERIAL: RED_STAINED_GLASS_PANE
+        LABEL: "&#FF3B30&l« ʙᴀᴄᴋ"
+        TOOLTIP: [ ]
+
+  SELL:
+    TITLE: "&#FF3B30&lʟɪѕᴛ ɪᴛᴇᴍ ꜰᴏʀ ѕᴀʟᴇ"
+    STRUCTURE:
+      - "g g g g i g g g g"
+      - "g . q . u . v . g"
+      - "g g g g x g g g g"
+    CHARS:
+      CONTENT: "."
+      BORDER: "g"
+      INFO: "i"
+      INPUT: "q"
+      PRICE-PER-ITEM: "u"
+      CONFIRM: "v"
+      BACK: "x"
+    BODY:
+      - " &7Selling: &f{amount}x {item}"
+      - ""
+      - " &7Asking price: &#34C759${price}"
+      - " &7Per item: &#FFCC00${unit_price}"
+      - " &7Listing fee: &#FF3B30${fee}"
+      - " &7You receive: &#34C759${payout}"
+      - " &8After ${tax} tax"
+      - ""
+      - " &8Price accepts 1k, 2.5m"
+    BODY-EMPTY:
+      - " &#FF3B30You are not holding anything."
+      - " &7Hold the item you want to sell,"
+      - " &7then reopen this menu."
+    PRICE-LABEL: "price"
+    ITEMS:
+      INFO:
+        MATERIAL: EMERALD
+      BORDER:
+        MATERIAL: GRAY_STAINED_GLASS_PANE
+        NAME: " "
+      INPUT:
+        MATERIAL: GOLD_INGOT
+        LABEL: "&#FFCC00&lѕᴇᴛ ᴘʀɪᴄᴇ"
+        TOOLTIP: [ "&7Click, then type in chat." ]
+      PRICE-PER-ITEM:
+        MATERIAL: COMPARATOR
+        LABEL: "&#FFCC00&lᴛʀᴇᴀᴛ ᴀѕ ᴘᴇʀ-ɪᴛᴇᴍ"
+        TOOLTIP: [ "&7Multiplies by the stack size &8({amount})" ]
+      CONFIRM:
+        MATERIAL: LIME_CONCRETE
+        LABEL: "&#34C759&l✔ ʟɪѕᴛ ɪᴛᴇᴍ"
+        TOOLTIP: [ "&7Publish it to the auction." ]
+      BACK:
+        MATERIAL: RED_STAINED_GLASS_PANE
+        LABEL: "&#FF3B30&l« ʙᴀᴄᴋ"
+        TOOLTIP: [ ]
+
+  CONFIRM-LISTING:
+    TITLE: "&#FF3B30&lᴄᴏɴꜰɪʀᴍ ʟɪѕᴛɪɴɢ"
+    STRUCTURE:
+      - "g g g g g g g g g"
+      - "g . x . i . v . g"
+      - "g g g g g g g g g"
+    CHARS:
+      CONTENT: "."
+      BORDER: "g"
+      INFO: "i"
+      BACK: "x"
+      CONFIRM: "v"
+    BODY:
+      - " &7List &#FF3B30{amount}x {item}"
+      - " &7for &#34C759${price}&7?"
+      - ""
+      - " &7Listing fee: &#FF3B30${fee}"
+      - " &7You receive on sale: &#34C759${payout}"
+    ITEMS:
+      BORDER:
+        MATERIAL: GRAY_STAINED_GLASS_PANE
+        NAME: " "
+      CONFIRM:
+        MATERIAL: LIME_CONCRETE
+        LABEL: "&#34C759&l✔ ᴄᴏɴꜰɪʀᴍ ѕᴀʟᴇ"
+        TOOLTIP: [ "&7Publish item to auction." ]
+      BACK:
+        MATERIAL: RED_CONCRETE
+        LABEL: "&#FF3B30&l✖ ᴀʙᴏʀᴛ"
+        TOOLTIP: [ "&7Cancel listing this item." ]
+
+  COLLECT:
+    TITLE: "&#FF3B30&lᴀᴜᴄᴛɪᴏɴ &8» &7Collect Items"
+    STRUCTURE:
+      - "g g g g i g g g g"
+      - "g . . . . . . . g"
+      - "g . . . . . . . g"
+      - "g . . . . . . . g"
+      - "g g g g g g g g g"
+      - "< x c p m d # # >"
+    CHARS:
+      CONTENT: "."
+      BORDER: "g"
+      FILLER: "#"
+      INFO: "i"
+      PREVIOUS: "<"
+      NEXT: ">"
+      BACK: "x"
+      COLLECT-ALL: "c"
+      DROP-PAGE: "p"
+      DROP-PAGES: "m"
+      DROP-ALL: "d"
+    BODY:
+      - " &7Listings waiting: &f{count}"
+      - " &7Items: &e{total_items}"
+      - ""
+      - " &7Page: &e{page}&7/&e{pages}"
+    EMPTY: "&7Nothing waiting for you."
+    ITEMS:
+      INFO:
+        MATERIAL: CHEST_MINECART
+      BORDER:
+        MATERIAL: GRAY_STAINED_GLASS_PANE
+        NAME: " "
+      FILLER:
+        MATERIAL: BLACK_STAINED_GLASS_PANE
+        NAME: " "
+      LOOT:
+        NAME: "&#FFCC00&l{item}{renamed_tag}"
+        LORE:
+          - " &7Was listed for &#34C759${price}"
+          - " &8{status}"
+          - ""
+          - " &a▸ Click to collect"
+      COLLECT-ALL:
+        MATERIAL: CHEST_MINECART
+        LABEL: "&#34C759&lᴄᴏʟʟᴇᴄᴛ ᴀʟʟ"
+        TOOLTIP: [ "&7Takes everything that fits." ]
+      DROP-PAGE:
+        MATERIAL: HOPPER
+        LABEL: "&#FF3B30&lᴅʀᴏᴘ ᴘᴀɢᴇ"
+        TOOLTIP: [ "&7Drops the {per_page} entries here." ]
+      DROP-PAGES:
+        MATERIAL: HOPPER
+        LABEL: "&#FF3B30&lᴅʀᴏᴘ {pages_batch} ᴘᴀɢᴇѕ"
+        TOOLTIP: [ ]
+      DROP-ALL:
+        MATERIAL: DROPPER
+        LABEL: "&#FF3B30&lᴅʀᴏᴘ ᴀʟʟ &7({total_items})"
+        TOOLTIP: [ "&cAnyone nearby can pick it up." ]
+      PREVIOUS:
+        MATERIAL: RED_STAINED_GLASS_PANE
+        LABEL: "&#FF3B30&l« ᴘʀᴇᴠɪᴏᴜѕ ᴘᴀɢᴇ"
+        TOOLTIP: [ ]
+      NEXT:
+        MATERIAL: LIME_STAINED_GLASS_PANE
+        LABEL: "&#34C759&lɴᴇxᴛ ᴘᴀɢᴇ »"
+        TOOLTIP: [ ]
+      BACK:
+        MATERIAL: BARRIER
+        LABEL: "&#FF3B30&l« ʙᴀᴄᴋ"
+        TOOLTIP: [ ]
+
+  DROP-CONFIRM:
+    TITLE: "&#FF3B30&lᴅʀᴏᴘ ᴇᴠᴇʀʏᴛʜɪɴɢ?"
+    STRUCTURE:
+      - "g g g g g g g g g"
+      - "g . x . i . v . g"
+      - "g g g g g g g g g"
+    CHARS:
+      CONTENT: "."
+      BORDER: "g"
+      INFO: "i"
+      BACK: "x"
+      CONFIRM: "v"
+    BODY:
+      - " &7Drop &#FF3B30{amount} &7items"
+      - " &7on the ground?"
+      - ""
+      - " &cThey are not protected."
+    ITEMS:
+      INFO:
+        MATERIAL: DROPPER
+      BORDER:
+        MATERIAL: GRAY_STAINED_GLASS_PANE
+        NAME: " "
+      CONFIRM:
+        MATERIAL: LIME_CONCRETE
+        LABEL: "&#FF3B30&l✔ ᴅʀᴏᴘ ɪᴛ ᴀʟʟ"
+        TOOLTIP: [ ]
+      BACK:
+        MATERIAL: RED_CONCRETE
+        LABEL: "&#FF3B30&l✖ ᴀʙᴏʀᴛ"
+        TOOLTIP: [ ]
+
+  TRANSACTIONS:
+    TITLE: "&#FF3B30&lᴛʀᴀɴѕᴀᴄᴛɪᴏɴ ʜɪѕᴛᴏʀʏ"
+    STRUCTURE:
+      - "g g g g i g g g g"
+      - "g . . . . . . . g"
+      - "g . . . . . . . g"
+      - "g . . . . . . . g"
+      - "g g g g g g g g g"
+      - "< x # # s # # # >"
+    CHARS:
+      CONTENT: "."
+      BORDER: "g"
+      FILLER: "#"
+      INFO: "i"
+      PREVIOUS: "<"
+      NEXT: ">"
+      SEARCH: "s"
+      BACK: "x"
+    BODY:
+      - " &7Total Earned: &#34C759${total_made}"
+      - " &7Total Spent: &#FF3B30${total_spent}"
+      - " &7Net: &#FFCC00${net}"
+      - ""
+      - " &8{sales} sales &8| {purchases} purchases"
+      - " &7Page: &e{page}&7/&e{pages}"
+      - " &7Filter: &f{query}"
+    EMPTY: "&7No transactions yet."
+    ITEMS:
+      INFO:
+        MATERIAL: GOLD_INGOT
+      BORDER:
+        MATERIAL: GRAY_STAINED_GLASS_PANE
+        NAME: " "
+      FILLER:
+        MATERIAL: BLACK_STAINED_GLASS_PANE
+        NAME: " "
+      SALE:
+        NAME: "&#34C759&l{item}"
+        LORE:
+          - " &7Sold to: &e{buyer}"
+          - " &7Revenue: &#34C759${price}"
+          - " &7Time: &8{time} ago"
+      PURCHASE:
+        NAME: "&#FF3B30&l{item}"
+        LORE:
+          - " &7Purchased from: &e{seller}"
+          - " &7Cost: &#FF3B30${price}"
+          - " &7Time: &8{time} ago"
+      SEARCH:
+        MATERIAL: OAK_SIGN
+        LABEL: "&#FF3B30&lꜰɪʟᴛᴇʀ ʙʏ ᴘʟᴀʏᴇʀ"
+        TOOLTIP: [ "&7Search history by username." ]
+      PREVIOUS:
+        MATERIAL: RED_STAINED_GLASS_PANE
+        LABEL: "&#FF3B30&l« ᴘʀᴇᴠɪᴏᴜѕ ᴘᴀɢᴇ"
+        TOOLTIP: [ ]
+      NEXT:
+        MATERIAL: LIME_STAINED_GLASS_PANE
+        LABEL: "&#34C759&lɴᴇxᴛ ᴘᴀɢᴇ »"
+        TOOLTIP: [ ]
+      BACK:
+        MATERIAL: BARRIER
+        LABEL: "&#FF3B30&l« ʙᴀᴄᴋ"
+        TOOLTIP: [ ]
